@@ -68,14 +68,14 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-12">
               {features.map((feature, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 + index * 0.1 }}
-                  className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50 hover:border-blue-500/50 transition-colors group"
+                  className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-gray-700/50 hover:border-blue-500/50 transition-colors group"
                 >
                   <feature.icon className="w-10 h-10 text-blue-400 mb-4 group-hover:text-blue-300 transition-colors" />
                   <h3 className="font-bold text-xl mb-2 text-white group-hover:text-blue-300 transition-colors">

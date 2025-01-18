@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
-import { useProjects } from '../lib/store';
+import { motion } from "framer-motion";
+import { ExternalLink, Github } from "lucide-react";
+import { useEffect } from "react";
+import { useProjects } from "../lib/store";
 
 const Projects = () => {
   const { projects, fetchProjects, loading, error } = useProjects();
 
   useEffect(() => {
-    console.log('Projects component mounted');
+    console.log("Projects component mounted");
     fetchProjects();
   }, [fetchProjects]);
 
@@ -16,10 +16,12 @@ const Projects = () => {
   }
 
   if (error) {
-    return <div className="text-center py-12 text-red-600">Erreur: {error}</div>;
+    return (
+      <div className="text-center py-12 text-red-600">Erreur: {error}</div>
+    );
   }
 
-  console.log('Rendering projects:', projects);
+  console.log("Rendering projects:", projects);
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -29,8 +31,8 @@ const Projects = () => {
         transition={{ duration: 0.5 }}
       >
         <h1 className="text-4xl font-bold text-center mb-12">Mes Projets</h1>
-        
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
           {projects.map((project) => (
             <motion.div
               key={project._id}
@@ -45,9 +47,13 @@ const Projects = () => {
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h2 className="text-2xl font-semibold mb-2 dark:text-white">{project.title}</h2>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
-                
+                <h2 className="text-2xl font-semibold mb-2 dark:text-white">
+                  {project.title}
+                </h2>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  {project.description}
+                </p>
+
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech) => (
                     <span
@@ -58,7 +64,7 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
-                
+
                 <div className="flex space-x-4">
                   {project.links.demo && (
                     <a
